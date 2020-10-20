@@ -15,6 +15,7 @@ docker
 ## Usage
 
 ```
+# required
 WORKING_DIR="/path/to/dir/with/your/repos"
 
 # default -- $WORKING_DIR/audit-reports
