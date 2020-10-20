@@ -104,7 +104,12 @@ for service_name in "${services[@]}"; do
   )"
 
   echo_e "$(red "($service_name)") Defining dependencies..."
-  deps_output="$(yarn why "$package_name" | grep 'Found\|depends\|Hoisted')"
+  deps_output="$(
+    docker run \
+      -v "$service_dir":/service \
+      yaroslavcodefresh/yarn-dep-inspector \
+      inspect "$package_name" --wd /service
+  )"
 
   echo_e "$(red "($service_name)") Printing to file..."
 
