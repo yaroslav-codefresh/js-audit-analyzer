@@ -14,11 +14,11 @@ default_services=(
 services=("${SERVICES[@]-${default_services[@]}}")
 
 package_name="$1"
-working_dir=${WORKING_DIR-'/home/yaroslav/work/codefresh'}
+current_dir=$(pwd)
+working_dir=${WORKING_DIR-$current_dir}
 reports_dir=${REPORTS_DIR-"$working_dir/audit-reports"}
 report_file="$reports_dir/$1"
 trivy_cache_dir="$HOME/.cache/trivy"
-current_dir=$(pwd)
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
